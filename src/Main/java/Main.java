@@ -1,5 +1,3 @@
-package Main;
-
 import Console.ConsoleApp;
 
 public class Main {

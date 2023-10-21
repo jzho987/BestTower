@@ -48,20 +48,9 @@ public class ApiTests {
     @Test
     public void TestApiGetStreamSuccess() {
         try {
-            var response = getter.getMappedCSV("https://comms-tech-test.s3.ap-southeast-2.amazonaws.com/tower_stream/tower-stream-2023-10-19T06%3A58%3A24.613Z.csv");
+            var response = getter.getMappedCSV("https://comms-tech-test.s3.ap-southeast-2.amazonaws.com/tower_stream/tower-stream-2023-10-19T06%3A58%3A24.613Z.csv", null);
             Assert.assertNotNull(response);
         } catch (IOException e) {
-            fail("This should not throw any exceptions");
-        }
-    }
-
-    @Test
-    public void TestApiGetStreamFile() {
-        try {
-            var response = getter.getMappedCSV("https://comms-tech-test.s3.ap-southeast-2.amazonaws.com/tower_stream/tower-stream-2023-10-19T06%3A58%3A24.613Z.csv");
-            Assert.assertNotNull(response);
-        } catch (IOException e) {
-            e.printStackTrace();
             fail("This should not throw any exceptions");
         }
     }

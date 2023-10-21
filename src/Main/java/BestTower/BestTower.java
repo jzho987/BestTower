@@ -1,5 +1,8 @@
 package BestTower;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -18,9 +21,6 @@ public class BestTower {
         try {
             var response = getter.get(listUrl);
 
-
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -35,9 +35,8 @@ public class BestTower {
      * @return List of strings that contains "item1", "item2", ...
      */
     public List<String> ResponseToList(String response) {
-        var cleaned = response.replace("{","")
-                .replace("}","")
-                .replace("\"","");
-        return new ArrayList<>(List.of(cleaned.split(",")));
+        Type listType = new TypeToken<ArrayList<String>>(){}.getType();
+        ArrayList<String> list = new Gson().fromJson(response, listType);
+        return list;
     }
 }

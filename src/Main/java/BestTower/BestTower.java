@@ -26,17 +26,5 @@ public class BestTower {
         }
     }
 
-    /**
-     * Turns certain types of JSON responses into a String list.
-     * Json converter library has a hard to converting non-list JSON into lists,
-     * hence the need for this parser.
-     *
-     * @param response - Has to be in the format: "{"item1","item2", ...}"
-     * @return List of strings that contains "item1", "item2", ...
-     */
-    public List<String> ResponseToList(String response) {
-        Type listType = new TypeToken<ArrayList<String>>(){}.getType();
-        ArrayList<String> list = new Gson().fromJson(response, listType);
-        return list;
-    }
+
 }

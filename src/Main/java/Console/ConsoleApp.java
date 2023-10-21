@@ -1,5 +1,7 @@
 package Console;
 
+import BestTower.BestTower;
+
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -10,10 +12,12 @@ import java.util.Scanner;
 public class ConsoleApp {
 
     boolean running = true;
+    BestTower bestTower;
     Scanner myObj;
 
     public ConsoleApp() {
         myObj = new Scanner(System.in);
+        bestTower = new BestTower();
     }
 
     public void start() {
@@ -67,6 +71,8 @@ public class ConsoleApp {
      * Run command logic
      */
     private void Run() {
-        //TODO implement sub
+        var farmId = getInput("Enter farm id: ");
+        var towerId = bestTower.getBestTower(farmId);
+        System.out.println("The tower with the lowest RSSI is id: \"" + towerId + "\".");
     }
 }

@@ -8,6 +8,9 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.fail;
 
@@ -48,8 +51,9 @@ public class ApiTests {
     @Test
     public void TestApiGetStreamSuccess() {
         try {
-            var response = getter.getMappedCSV("https://comms-tech-test.s3.ap-southeast-2.amazonaws.com/tower_stream/tower-stream-2023-10-19T06%3A58%3A24.613Z.csv", null);
-            Assert.assertNotNull(response);
+            Map<String, Map<String, List<Integer>>> map = new HashMap<>();
+            getter.getMappedCSV("https://comms-tech-test.s3.ap-southeast-2.amazonaws.com/tower_stream/tower-stream-2023-10-19T06%3A58%3A24.613Z.csv", map);
+            Assert.assertNotNull(map);
         } catch (IOException e) {
             fail("This should not throw any exceptions");
         }

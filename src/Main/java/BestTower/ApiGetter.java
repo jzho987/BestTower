@@ -1,12 +1,10 @@
 package BestTower;
 
-import BestTower.Model.Tower;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,7 +32,14 @@ public class ApiGetter {
         }
     }
 
-    public Map<String, List<Tower>> getMappedCSV(String url) throws IOException, NullPointerException {
+    public void getMappedCSV(String url, Map<String, Map<String,List<Integer>>> out) throws IOException, NullPointerException {
+
+        Map<String, Map<String,List<Integer>>> map = new HashMap<>();
+
+        if(out != null) {
+            map = out;
+        }
+
         Request request = new Request.Builder()
                 .url(url)
                 .get()
@@ -43,23 +48,7 @@ public class ApiGetter {
             var stream =  response.body().byteStream();
             var reader = new BufferedReader(new InputStreamReader(stream));
 
-            Map<String, List<Tower>> map = new HashMap<>();
-
-            String line = reader.readLine(); // ignore first line
-            while((line=reader.readLine())!=null){
-
-                String values[] = line.split(",");
-                if(values.length >= 3) {
-                    if(!map.containsKey(values[0])) {
-                        map.put(values[0], new ArrayList<Tower>(List.of(new Tower[]{new Tower(values[1], Integer.parseInt(values[2]))})));
-                    }
-                    else {
-                        map.get(values[0]).add(new Tower(values[1],Integer.parseInt(values[2])));
-                    }
-                }
-            }
-
-            return map;
+            ParseHelper.CSVstreamToMap(stream, map);
         }
     }
 

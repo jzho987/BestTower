@@ -26,11 +26,11 @@ public class ParseHelper {
         return list;
     }
 
-    public static Map<String, Map<String,List<Integer>>> CSVstreamToMap(InputStream stream, Map<String, Map<String,List<Integer>>> prev) throws IOException {
+    public static void CSVstreamToMap(InputStream stream, Map<String, Map<String,List<Integer>>> out) throws IOException {
 
         Map<String, Map<String,List<Integer>>> map = new HashMap<>();
-        if(prev != null) {
-            map = prev;
+        if(out != null) {
+            map = out;
         }
 
         var reader = new BufferedReader(new InputStreamReader(stream));
@@ -60,7 +60,5 @@ public class ParseHelper {
                 }
             }
         }
-
-        return map;
     }
 }

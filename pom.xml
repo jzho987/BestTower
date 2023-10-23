@@ -43,7 +43,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>Main</mainClass>
+                            <mainClass>RunFunction</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

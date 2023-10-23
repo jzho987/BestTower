@@ -73,6 +73,12 @@ public class ConsoleApp {
     private void Run() {
         var farmId = getInput("Enter farm id: ");
         var towerId = bestTower.getBestTower(farmId);
-        System.out.println("The tower with the lowest RSSI is id: \"" + towerId + "\".");
+
+        if(towerId != null) {
+            System.out.println("The tower with the lowest RSSI is id: \"" + towerId + "\".");
+        }
+        else {
+            System.out.println("No tower Id found");
+        }
     }
 }

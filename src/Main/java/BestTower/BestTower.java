@@ -1,15 +1,18 @@
 package BestTower;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
 import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Main functional class for handling the logic for calculating the best tower for the given farm
+ * The "map" variable is only public for testing purposes and use of Interfaces should be done when progressing further.
+ * The class runs start up when querying the best tower the first time, and speeds up on subsequent runs.
+ *
+ * Changing ListUrl into a constructor variable will help with scaling
+ *
+ */
 public class BestTower {
 
     private ApiGetter getter;

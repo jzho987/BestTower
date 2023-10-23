@@ -1,5 +1,9 @@
 import BestTower.BestTower;
 
+/**
+ * Runs the function directly. This will take a while since it gets the data everytime this is run.
+ * For better performance and repeated use, use the "Main.main()" function.
+ */
 public class RunFunction {
     public static void main(String[] args) {
         if(args.length < 1) {

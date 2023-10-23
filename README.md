@@ -9,11 +9,12 @@ The farm ID would be provided when trying to run the script and returns the ID o
 ## How to run
 This script is coded in Java. See below for how to run the scripts.
 ### Depdendencies
-This script uses Java 16 SDK. First run this script in the "Command Prompt" for your given systemto ensure that Java is downloaded.
+This script uses Java with JDK version 16. First run this line in the "Command Prompt" for your given system to ensure that the correct version of Java is downloaded.
 
 `java --show-version`
 
-If the first line of the output denotes that a Java Run-Time Environment version of at least 16 is downloaded, we can proceed!
+If the first line of the output denotes that a Java Run-Time Environment version of at least 16 is downloaded, we can proceed! If Java is not downloaded, 
+use this link to download the correct version of [Java](https://www.oracle.com/nz/java/technologies/downloads/#java17),
 
 ### Run Console Application
 The console application script shows a rerunnable application that has a command prompt interface. To run this, navigate to the root folder

@@ -13,7 +13,7 @@ import java.util.Map;
 public class BestTower {
 
     private ApiGetter getter;
-    private Map<String, Map<String,List<Integer>>> map;
+    public Map<String, Map<String,List<Integer>>> map; // public for testing purposes
     private final String listUrl = "https://api.onizmx.com/lambda/tower_stream";
 
     public BestTower() {
@@ -22,8 +22,9 @@ public class BestTower {
 
     public String getBestTower(String farmId) {
         if(map == null) {
+            System.out.println("Loading values from API...");
             StartUp();
-            System.out.println("Loading values from API");
+            System.out.println("Values loaded.");
         }
 
         return bestTower(farmId);
@@ -59,8 +60,8 @@ public class BestTower {
         }
 
         var innerMap = map.get(farmId);
-        int min = 0;
-        String minTower = null;
+        int max = (int) Double.NEGATIVE_INFINITY;
+        String maxTower = null;
 
         for(String towerId : innerMap.keySet()) {
             int total = 0;
@@ -71,13 +72,13 @@ public class BestTower {
             }
             var average = total / list.size();
 
-            if(average < min) {
-                min = average;
-                minTower = towerId;
+            if(average > max) {
+                max = average;
+                maxTower = towerId;
             }
         }
 
-        return minTower;
+        return maxTower;
     }
 
 }
